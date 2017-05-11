@@ -12,9 +12,9 @@ else
     MYBRANCH=$1
 fi
 
-BASEREPO="https://github.com/jbcodeforce/refarch-cognitive"
-REPO_WCS="https://github.com/jbcodeforce/refarch-cognitive-conversation-broker"
-REPO_WDS="https://github.com/jbcodeforce/refarch-cognitive-discovery-broker"
+BASEREPO="https://github.com/ibm-cloud-architecture/refarch-cognitive"
+REPO_WCS="https://github.com/ibm-cloud-architecture/refarch-cognitive-conversation-broker"
+REPO_WDS="https://github.com/ibm-cloud-architecture/refarch-cognitive-discovery-broker"
 
 echo 'Cloning peer projects...'
 

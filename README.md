@@ -4,10 +4,10 @@
 This project provides a reference implementation for building cognitive application on the cloud using micro service architecture, Watson Cloud development APIs, and Cloud Service Management and Operations.
 [Architecture Center - Cognitive Architecture](https://www.ibm.com/devops/method/content/architecture/cognitiveArchitecture#0_0)
 # Project Repositories
-This project leverages other projects by applying clear separation of concerns design and microservice approach.
-* [Cognitive Conversation Broker](https://github.com/jbcodeforce/refarch-cognitive-conversation-broker)
-* [Cognitive Discovery Broker](https://github.com/jbcodeforce/refarch-cognitive-discovery-broker)
-* [Cognitive Extends]()
+This project leverages other projects by applying clear separation of concerns design and micro service approach.
+* [Cognitive Conversation Broker](https://github.com/ibm-cloud-architecture/refarch-cognitive-conversation-broker)
+* [Cognitive Discovery Broker](https://github.com/ibm-cloud-architecture/refarch-cognitive-discovery-broker)
+* [Cognitive Extends](https://github.com/ibm-cloud-architecture/refarch-cognitive-extends)
 
 # Run the reference application locally and on IBM Bluemix
 To run the sample application you will need to configure your Bluemix environment by adding web application (nodejs sdk) and some of the Watson services... See each specific project for instructions.
@@ -26,7 +26,7 @@ As IBM Bluemix application, many commands will require the Bluemix CLI toolkit t
 
 ## Step 2: Get application source code
 
-Clone the base repository: ``` git clone https://github.com/jbcodeforce/refarch-cognitive```
+Clone the base repository: ``` git clone https://github.com/ibm-cloud-architecture/refarch-cognitive```
 
 Clone the peer repositories: ./clonePeers.sh
 
