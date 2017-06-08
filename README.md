@@ -22,6 +22,13 @@ To run the sample application you will need to configure your Bluemix environmen
 * You need to have a [Bluemix](http://bluemix.net) account, and know how to use cloud foundry command line interface to push to bluemix, the web application used to demonstrate the solution.
 * Install the Bluemix CLI: As IBM Bluemix application, many commands will require the Bluemix CLI toolkit to be installed on your local environment. To install it, follow [these instructions](https://console.ng.bluemix.net/docs/cli/index.html#cli)
 
+## Expected skill set
+This compute mode is for developer, technical sellers, and architect. As the code and how tos are based on nodejs, javascript and REST api, the following tutorial can be used for skill ramp up:
+* npm for node and javascript installation: [What is npm](https://docs.npmjs.com/getting-started/what-is-npm)
+* nodejs with a simple tutorial at [w3school](https://www.w3schools.com/nodejs/)
+* expressjs [tutorial](https://www.tutorialspoint.com/nodejs/nodejs_express_framework.htm)
+* angular 2 is used for the user interface of each component, you can use the excellent official [tutorial](https://angular.io/docs/ts/latest/tutorial/) to get good skill set.
+
 ### Create a New Space in Bluemix
 
 1. Click on the Bluemix account in the top right corner of the web interface.
