@@ -10,7 +10,8 @@ This project leverages other projects by applying clear separation of concerns d
 * [Cognitive Discovery Broker](https://github.com/ibm-cloud-architecture/refarch-cognitive-discovery-broker)
 * [Cognitive Extends](https://github.com/ibm-cloud-architecture/refarch-cognitive-extends)
 * [Context driven dialog with ODM](https://github.com/ibm-cloud-architecture/context-driven-dialog)
-* [Supplier Business Process](https://github.com/ibm-cloud-architecture/refarch-cognitive-supplier-process)
+* [Supplier On Boarding Business Process for IBM BPM on Cloud](https://github.com/ibm-cloud-architecture/refarch-cognitive-supplier-process)
+* [ODM data model to integrate with Watson Conversation](https://github.com/ibm-cloud-architecture/refarch-cognitive-odm-model) and supports assessment, questionnaire and questions so the dialog flow can also be enhanced with ODM, and ODM used as best action decision automation from derived facts coming from NLU, Classifiers and conversation context.
 
 ## Run the reference application locally and on IBM Bluemix
 To run the sample application you will need to configure your Bluemix environment by adding web application (nodejs sdk) and some of the Watson services... See each specific project for instructions.
