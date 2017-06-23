@@ -1,17 +1,17 @@
 # Cognitive Reference Architecture
 
 ## Architecture
-This project provides a reference implementation for building cognitive application on the cloud using micro service architecture, Watson Cloud development APIs, and Cloud Service Management and Operations. At the high level the set of code repositories defined in this compute model, also named cyan compute, will support the following diagram:
+This project provides a reference implementation for building cognitive application on the cloud using micro service architecture, Watson Cloud development APIs, and Cloud Service Management and Operations. This is the **cyan compute model**. At the high level the set of code repositories defined in this compute model, also named cyan compute, will support the following diagram:
 ![](docs/cognitive-toplevelview.png)
 [Architecture Center - Cognitive Architecture](https://www.ibm.com/devops/method/content/architecture/cognitiveArchitecture#0_0)
 ## Project Repositories
 This project leverages other projects by applying clear separation of concerns design and micro service approach.
-* [Cognitive Conversation Broker](https://github.com/ibm-cloud-architecture/refarch-cognitive-conversation-broker)
-* [Cognitive Discovery Broker](https://github.com/ibm-cloud-architecture/refarch-cognitive-discovery-broker)
+* [Cognitive Conversation Broker](https://github.com/ibm-cloud-architecture/refarch-cognitive-conversation-broker) presents the broker pattern to facade Watson Conversation to implement business oriented orchestration of services, to support resiliency, logging, failover, high availability, service management,... It also deliver a simple Angular 2 user interface to test two conversations: *IT support*, and *help in context* of a BPM process. The project includes a step by step tutorial to help you build the *IT support* chat bot.
+* [Cognitive Discovery Broker](https://github.com/ibm-cloud-architecture/refarch-cognitive-discovery-broker) presents the same broker pattern but in front of Watson Discovery. The project includes a user interface in Angular 2 to present Discovery Results, and a tutorial to build a *hurricane* getting ready knowledge base.
 * [Cognitive Extends](https://github.com/ibm-cloud-architecture/refarch-cognitive-extends)
-* [Context driven dialog with ODM](https://github.com/ibm-cloud-architecture/context-driven-dialog)
-* [Supplier On Boarding Business Process for IBM BPM on Cloud](https://github.com/ibm-cloud-architecture/refarch-cognitive-supplier-process)
-* [ODM data model to integrate with Watson Conversation](https://github.com/ibm-cloud-architecture/refarch-cognitive-odm-model) and supports assessment, questionnaire and questions so the dialog flow can also be enhanced with ODM, and ODM used as best action decision automation from derived facts coming from NLU, Classifiers and conversation context.
+* [Context driven dialog with ODM](https://github.com/ibm-cloud-architecture/context-driven-dialog) This project use Natural Language Classifier to understand a user's query and ODM rulesets to do support the dialog.
+ * [Supplier On Boarding Business Process for IBM BPM on Cloud](https://github.com/ibm-cloud-architecture/refarch-cognitive-supplier-process) This business process deployable on IBM BPM, IBM BPM on Cloud demonstrates how to expose a process as a web service so it can be triggered by the Conversation broker and to ingrate Discovery broker inside the process flow so the process can use the curated **News Collection** in Watson Discovery. Finally the process integrate the *help in context* conversation.
+* [ODM data model to integrate with Watson Conversation](https://github.com/ibm-cloud-architecture/refarch-cognitive-odm-model): This project defines the rule business object model to support assessment, questionnaire and questions so the dialog flow can also be enhanced with ODM, and ODM used as best action decision automation from derived facts coming from NLU, Classifiers and event Watson Conversation response.
 
 ## Run the reference application locally and on IBM Bluemix
 To run the sample application you will need to configure your Bluemix environment by adding web application (nodejs sdk) and some of the Watson services... See each specific project for instructions.
