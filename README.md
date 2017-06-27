@@ -1,7 +1,7 @@
 # Cognitive Reference Architecture
 
 ## Architecture
-This project provides a reference implementation for building cognitive application on the cloud using micro service architecture, Watson Cloud development APIs, and Cloud Service Management and Operations. This is the **cyan compute model**. At the high level the set of code repositories defined in this compute model, also named cyan compute, will support the following diagram:
+This project provides a reference implementation for building cognitive application on the cloud using micro service architecture, Watson Cloud development APIs, and Cloud Service Management and Operations. This is the **cyan compute model**. At the high level the set of code repositories defined in this compute model, also named **cyan compute**, will support the following diagram:
 ![](docs/cognitive-toplevelview.png)
 [Architecture Center - Cognitive Architecture](https://www.ibm.com/devops/method/content/architecture/cognitiveArchitecture#0_0)
 ## Project Repositories
@@ -13,8 +13,7 @@ This project leverages other projects by applying clear separation of concerns d
  * [Supplier On Boarding Business Process for IBM BPM on Cloud](https://github.com/ibm-cloud-architecture/refarch-cognitive-supplier-process) This business process deployable on IBM BPM, IBM BPM on Cloud demonstrates how to expose a process as a web service so it can be triggered by the Conversation broker and to ingrate Discovery broker inside the process flow so the process can use the curated **News Collection** in Watson Discovery. Finally the process integrate the *help in context* conversation.
 * [ODM data model to integrate with Watson Conversation](https://github.com/ibm-cloud-architecture/refarch-cognitive-odm-model): This project defines the rule business object model to support assessment, questionnaire and questions so the dialog flow can also be enhanced with ODM, and ODM used as best action decision automation from derived facts coming from NLU, Classifiers and event Watson Conversation response.
 
-## Run the reference application locally and on IBM Bluemix
-To run the sample application you will need to configure your Bluemix environment by adding web application (nodejs sdk) and some of the Watson services... See each specific project for instructions.
+## Run the reference application locally
 
 ### Prerequisites
 * You need your own [github.com](http://github.com) account
@@ -30,13 +29,16 @@ This compute mode is for developer, technical sellers, and architect. As the cod
 * expressjs [tutorial](https://www.tutorialspoint.com/nodejs/nodejs_express_framework.htm)
 * angular 2 is used for the user interface of each component, you can use the excellent official [tutorial](https://angular.io/docs/ts/latest/tutorial/) to get good skill set.
 
-### Create a New Space in Bluemix
+## Deploy the solution as dockerized applications in Kubernetes Cluster
+Each cyan compute app has its own dockerfile to support docker deployment. But to support high availability, monitoring, service management,... the docker containers are deployed on Bluemix Kubernetes Service. [This section](docs/cyancluster.md) describes the common part for each application about docker and **cyancluster** kubernetes settings.
 
-1. Click on the Bluemix account in the top right corner of the web interface.
+### Create a New Space in Bluemix
+To better isolate your work, apps and services
+1. Click on the Bluemix account menu on the top right corner of the web interface.
 2. Click Create a new space.
 3. Enter "cognitive-dev" for the space name and complete the wizard.
 
-### Get application source code
+### Get cyan compute source code
 
 Clone the base repository: ``` git clone https://github.com/ibm-cloud-architecture/refarch-cognitive```
 
