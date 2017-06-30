@@ -2,7 +2,7 @@
 
 ## Architecture
 This project provides a reference implementation for building cognitive application on the cloud using micro service architecture, Watson Cloud development APIs, and Cloud Service Management and Operations. This is the **cyan compute model**. At the high level the set of code repositories defined in this compute model, also named **cyan compute**, will support the following diagram:
-![](docs/cognitive-toplevelview.png)
+![](doc/cognitive-toplevelview.png)
 [Architecture Center - Cognitive Architecture](https://www.ibm.com/devops/method/content/architecture/cognitiveArchitecture#0_0)
 ## Project Repositories
 This project leverages other projects by applying clear separation of concerns design and micro service approach.
@@ -30,13 +30,24 @@ This compute mode is for developer, technical sellers, and architect. As the cod
 * angular 2 is used for the user interface of each component, you can use the excellent official [tutorial](https://angular.io/docs/ts/latest/tutorial/) to get good skill set.
 
 ## Deploy the solution as dockerized applications in Kubernetes Cluster
-Each cyan compute app has its own dockerfile to support docker deployment. But to support high availability, monitoring, service management,... the docker containers are deployed on Bluemix Kubernetes Service. [This section](docs/cyancluster.md) describes the common part for each application about docker and **cyancluster** kubernetes settings.
+Each cyan compute app has its own dockerfile to support docker deployment. But to support high availability, monitoring, service management,... the docker containers are deployed on Bluemix Kubernetes Service. [This section](doc/cyancluster.md) describes the common part for each application about docker and **cyancluster** kubernetes settings.
 
 ### Create a New Space in Bluemix
 To better isolate your work, apps and services
 1. Click on the Bluemix account menu on the top right corner of the web interface.
 2. Click Create a new space.
 3. Enter "cognitive-dev" for the space name and complete the wizard.
+
+### If you do not have git...
+Install git on Mac by installing the Command Line Tools for xCode.
+
+To do this, open a terminal and execute the following command.
+```
+xcode-select --install
+```
+
+On Windows:
+Download and install the package from https://git-for-windows.github.io and install it.
 
 ### Get cyan compute source code
 
@@ -45,7 +56,8 @@ Clone the base repository: ``` git clone https://github.com/ibm-cloud-architectu
 Clone the peer repositories: ```./clonePeers.sh```  
 
 ### Build and run locally each application.
-See instruction and tutorial in each project.
+* If not already done, install the different CLI needed: bluemix, cf, and kubernetes, we deliver for you a script for that see `./install_cli.sh`
+* See instruction and tutorial in each project.
 
 ## Contribute
 We welcome your contribution. There are multiple ways to contribute: report bugs and improvement suggestion, improve documentation and contribute code.
