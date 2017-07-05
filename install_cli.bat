@@ -1,5 +1,5 @@
 @echo off
-SETLOCAL ENABLEDELAYEDEXPANSION ENABLEEXTENSIONS 
+SETLOCAL ENABLEDELAYEDEXPANSION ENABLEEXTENSIONS
 set PATH=%PATH%;%CD%;%CD%\win_utils
 
 :install_bx
@@ -15,6 +15,7 @@ move  Bluemix_CLI_%BX_VER%_amd64.exe win_utils\Bluemix_CLI_%BX_VER%_amd64.exe
 start /wait win_utils\Bluemix_CLI_%BX_VER%_amd64.exe
 :bx_installed
 echo BX CLI is installed.
+rm nul
 
 :install_bx_cs
 echo BX CS plugin will be installed.
@@ -74,3 +75,7 @@ curl -LO https://github.com/mikefarah/yaml/releases/download/1.11/yaml_windows_a
 move yaml_windows_amd64.exe win_utils\yaml.exe
 :yaml_installed
 echo yaml is installed
+
+:install_angular_cli
+echo Install Angular CLI
+ng >nul 2>&1

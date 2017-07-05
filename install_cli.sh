@@ -18,7 +18,7 @@ if [[ $? -ne 0 ]]; then
 		tar zxvf Bluemix_CLI.tar.gz
 		Bluemix_CLI/install_bluemix_cli
 		rm -f /tmp/Bluemix_CLI.tar.gz
-		rm -rf /tmp/Bluemix_CLI 
+		rm -rf /tmp/Bluemix_CLI
 	fi
 fi
 
@@ -54,7 +54,7 @@ if [[ $? -ne 0 ]]; then
 	chmod +x ./kubectl
 	sudo mv ./kubectl /usr/local/bin/kubectl
 fi
-		
+
 # Checking if helm is installed
 KUBE_PATH=$(command -v helm)
 
@@ -106,4 +106,26 @@ if [[ $? -ne 0 ]]; then
 
 	chmod +x ./yaml
 	sudo mv ./yaml /usr/local/bin/yaml
+fi
+
+
+# installing Node
+NODE_PATH=$(command -v node)
+if [[ $? -ne 0 ]]; then
+	printf "\n\n${grn}Installing Node${end}\n"
+	if [[ $OSTYPE =~ .*darwin.* ]]; then
+		# OS X
+		curl "https://nodejs.org/dist/latest/node-${VERSION:-$(wget -qO- https://nodejs.org/dist/latest/ | sed -nE 's|.*>node-(.*)\.pkg</a>.*|\1|p')}.pkg" > "$HOME/Downloads/node-latest.pkg" && sudo installer -store -pkg "$HOME/Downloads/node-latest.pkg" -target "/"
+	elif [[ $OSTYPE =~ .*linux.* ]]; then
+		# Linux
+		
+	fi
+
+fi
+
+# installing Angular CLI
+NG_PATH=$(command -v ng)
+if [[ $? -ne 0 ]]; then
+	printf "\n\n${grn}Installing Angular CLI${end}\n"
+	sudo npm i -g @angular/cli@latest
 fi
