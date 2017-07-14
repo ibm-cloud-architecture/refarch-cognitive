@@ -3,9 +3,11 @@ This project provides a reference implementation for building and running cloud 
 ## Table of content
 * [Architecture](https://github.com/ibm-cloud-architecture/refarch-cognitive#architecture)  
 * [Project Repositories](https://github.com/ibm-cloud-architecture/refarch-cognitive#project-repositories)
-* [Run the reference application locally](https://github.com/ibm-cloud-architecture/refarch-cognitive#run_the_reference_application_locally)
-* [Skill Set](https://github.com/ibm-cloud-architecture/refarch-cognitive#expected_skill_set)
-* [Deployment in Kubernetes Cluster](https://github.com/ibm-cloud-architecture/refarch-cognitive#deploy_the_solution_as_dockerized_applications_in_kubernetes_cluster)
+* [Pre requisites](https://github.com/ibm-cloud-architecture/refarch-cognitive#pre-requisites)
+* [Skill Set](https://github.com/ibm-cloud-architecture/refarch-cognitive#expected-skill-set)
+* [Run the reference application locally](https://github.com/ibm-cloud-architecture/refarch-cognitive#run-the-reference-application-locally)
+
+* [Deployment in Kubernetes Cluster](https://github.com/ibm-cloud-architecture/refarch-cognitive#deploy-the-solution-as-dockerized-applications-in-kubernetes-cluster)
 * [Contribute](https://github.com/ibm-cloud-architecture/refarch-cognitive#contribute)
 
 ## Architecture
@@ -27,13 +29,17 @@ This project leverages other projects by applying clear separation of concerns p
  * [Supplier On Boarding Business Process for IBM BPM on Cloud](https://github.com/ibm-cloud-architecture/refarch-cognitive-supplier-process) This business process deployable on IBM BPM, IBM BPM on Cloud demonstrates how to expose a process as a web service so it can be triggered by the Conversation broker and to ingrate Discovery broker inside the process flow so the process can use the curated **News Collection** in Watson Discovery. Finally the process integrate the *help in context* conversation.
 * [ODM data model to integrate with Watson Conversation](https://github.com/ibm-cloud-architecture/refarch-cognitive-odm-model): This project defines the rule business object model to support assessment, questionnaire and questions so the dialog flow can also be enhanced with ODM, and ODM used as best action decision automation from derived facts coming from NLU, Classifiers and event Watson Conversation response.
 
-## Run the reference application locally
-
-### Prerequisites
+## Pre Requisites
 * You need your own [github.com](http://github.com) account
 * You need a git client code. For example for [Windows](https://git-scm.com/download/win) and for [Mac](https://git-scm.com/download/mac)
 * Install [npm](https://www.npmjs.com/get-npm) and [nodejs](). Normally getting nodejs last stable version will bring npm too.
 * You need to have a [Bluemix](http://bluemix.net) account, and know how to use cloud foundry command line interface to push to bluemix, the web application used to demonstrate the solution.
+* Create a New Space in Bluemix
+To better isolate your work, apps and services
+1. Click on the Bluemix account menu on the top right corner of the web interface.
+2. Click Create a new space.
+3. Enter "cognitive-dev" for the space name and complete the wizard.
+
 * Install the Bluemix CLI: As IBM Bluemix application, many commands will require the Bluemix CLI toolkit to be installed on your local environment. To install it, follow [these instructions](https://console.ng.bluemix.net/docs/cli/index.html#cli)
 
 ## Expected skill set
@@ -43,26 +49,7 @@ This compute mode is for developer, technical sellers, and architect. As the cod
 * expressjs [tutorial](https://www.tutorialspoint.com/nodejs/nodejs_express_framework.htm)
 * angular 2 is used for the user interface of each component, you can use the excellent official [tutorial](https://angular.io/docs/ts/latest/tutorial/) to get good skill set.
 
-## Deploy the solution as dockerized applications in Kubernetes Cluster
-Each cyan compute app has its own dockerfile to support docker deployment. But to support high availability, monitoring, service management,... the docker containers are deployed on Bluemix Kubernetes Service. [This section](doc/cyancluster.md) describes the common part for each application about docker and **cyancluster** kubernetes settings.
-
-### Create a New Space in Bluemix
-To better isolate your work, apps and services
-1. Click on the Bluemix account menu on the top right corner of the web interface.
-2. Click Create a new space.
-3. Enter "cognitive-dev" for the space name and complete the wizard.
-
-### If you do not have git...
-Install git on Mac by installing the Command Line Tools for xCode.
-
-To do this, open a terminal and execute the following command.
-```
-xcode-select --install
-```
-
-On Windows:
-Download and install the package from https://git-for-windows.github.io and install it.
-
+## Run the reference application locally
 ### Get cyan compute source code
 
 Clone the base repository: ``` git clone https://github.com/ibm-cloud-architecture/refarch-cognitive```
@@ -72,6 +59,10 @@ Clone the peer repositories: ```./clonePeers.sh```
 ### Build and run locally each application.
 * If not already done, install the different CLI needed: bluemix, cf, and kubernetes, we deliver for you a script for that see `./install_cli.sh`
 * See instruction and tutorial in each project.
+
+## Deploy the solution as dockerized applications in Kubernetes Cluster
+Each **Cyan compute** app has its own dockerfile to support docker deployment. To support high availability, monitoring, service management,... the docker containers are deployed on Bluemix Kubernetes Service. [This section](doc/cyancluster.md) describes some basic knowledge about docker and **cyan cluster** kubernetes settings.
+Each project explain how to deploy it in the **cyan cluster** for example of the Watson Discovery Broker microservice see [the note](https://github.com/ibm-cloud-architecture/refarch-cognitive-discovery-broker/blob/master/doc/wds-broker-kube.md)
 
 ## Contribute
 We welcome your contribution. There are multiple ways to contribute: report bugs and improvement suggestion, improve documentation and contribute code.

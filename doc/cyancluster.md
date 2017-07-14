@@ -11,6 +11,7 @@ Just to recall the value of using container for the cognitive application are th
 * Docker ensures that applications that are running on containers are completely segregated and isolated from each other, granting you complete control over traffic flow and management
 
 ## Value proposition for Kubernetes on Bluemix
+Kubernetes is an open source system for automating the deployment, scaling, and management of containerized apps.
 * high availability 24/7
 * Deploy new version multiple times a day
 * Standard use of container for apps and business services
@@ -29,8 +30,9 @@ There are multiple model for Kubernetes cluster, for demonstration purpose the l
 
 Clusters are specific to an account and an organization, but are independent from a Bluemix space.
 
-The following diagram illustrates the **cyan compute** cluster configuration:
+The following diagram illustrates the **cyan compute** cluster configuration:  
 ![](cyan-kube.png)  
+
 Nodes or Worker nodes are virtual or physical server, managed by the Kubernetes master, and hosting containerized applications. An app in production runs replicas of the app across multiple worker nodes to provide higher availability for your app. A node has a public IP address.
 Every containerized app is deployed, run, and managed by a pod.
 
@@ -78,3 +80,9 @@ $ export NODE_PORT=$(kubectl get services/casewdsbroker -o go-template='{{(index
 
 $ kubectl describe deployment
 ```
+
+
+## Kubernetes Compendum
+* [Official site](https://kubernetes.io)
+* [Very good tutorial from kubernetes web site](https://kubernetes.io/docs/tutorials/kubernetes-basics/scale-intro/)
+* [Garage method tutorial on Kubernetes](https://cloudcontent.mybluemix.net/devops/method/tutorials/kubernetes)
