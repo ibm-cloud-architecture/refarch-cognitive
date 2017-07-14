@@ -6,13 +6,12 @@ This project provides a reference implementation for building and running cloud 
 * [Pre requisites](https://github.com/ibm-cloud-architecture/refarch-cognitive#pre-requisites)
 * [Skill Set](https://github.com/ibm-cloud-architecture/refarch-cognitive#expected-skill-set)
 * [Run the reference application locally](https://github.com/ibm-cloud-architecture/refarch-cognitive#run-the-reference-application-locally)
-
 * [Deployment in Kubernetes Cluster](https://github.com/ibm-cloud-architecture/refarch-cognitive#deploy-the-solution-as-dockerized-applications-in-kubernetes-cluster)
 * [Contribute](https://github.com/ibm-cloud-architecture/refarch-cognitive#contribute)
 
 ## Architecture
 At the high level the set of code repositories defined in this compute model support the following diagram:
-![](doc/cognitive-toplevelview.png)
+![](doc/cyan-compute.png)
 
 For explanation of the components of this architecture see [Architecture Center - Cognitive Architecture](https://www.ibm.com/devops/method/content/architecture/cognitiveArchitecture#0_0)
 
@@ -47,7 +46,11 @@ This compute mode is for developer, technical sellers, and architect. As the cod
 * npm for node and javascript installation: [What is npm](https://docs.npmjs.com/getting-started/what-is-npm)
 * nodejs with a simple tutorial at [w3school](https://www.w3schools.com/nodejs/)
 * expressjs [tutorial](https://www.tutorialspoint.com/nodejs/nodejs_express_framework.htm)
-* angular 2 is used for the user interface of each component, you can use the excellent official [tutorial](https://angular.io/docs/ts/latest/tutorial/) to get good skill set.
+* angular 4 is used for the user interface of each component, you can use the excellent official [tutorial](https://angular.io/docs/ts/latest/tutorial/) to get good skill set and the code explanation in each project.
+
+You can learn from the **Cyan compute** work:
+* how to create a Watson Conversation with this [hands-on tutorial](https://github.com/ibm-cloud-architecture/refarch-cognitive-conversation-broker/blob/master/doc/tutorial/README.md) and how to integrate with BPM
+* how to create document collection in Watson Discovery, how to do advance query, how to integrate with public API, how to leverage Knowledge Studio in this [deep dive tutorial](https://github.com/ibm-cloud-architecture/refarch-cognitive-discovery-broker/blob/master/doc/tutorial/wds-lab.md)
 
 ## Run the reference application locally
 ### Get cyan compute source code
