@@ -1,11 +1,25 @@
 # Cognitive Reference Architecture
+This project provides a reference implementation for building and running cloud based cognitive application using micro service architecture, Watson Cloud development APIs, and Cloud Service Management and Operations. This is the **cyan compute model** and aims to give best practices to develop hybrid cognitive application that accesses on-premise datasource, a set of Bluemix Watson Services.
+## Table of content
+* [Architecture](https://github.com/ibm-cloud-architecture/refarch-cognitive#architecture)  
+* [Project Repositories](https://github.com/ibm-cloud-architecture/refarch-cognitive#project-repositories)
+* [Run the reference application locally](https://github.com/ibm-cloud-architecture/refarch-cognitive#run_the_reference_application_locally)
+* [Skill Set](https://github.com/ibm-cloud-architecture/refarch-cognitive#expected_skill_set)
+* [Deployment in Kubernetes Cluster](https://github.com/ibm-cloud-architecture/refarch-cognitive#deploy_the_solution_as_dockerized_applications_in_kubernetes_cluster)
+* [Contribute](https://github.com/ibm-cloud-architecture/refarch-cognitive#contribute)
 
 ## Architecture
-This project provides a reference implementation for building cognitive application on the cloud using micro service architecture, Watson Cloud development APIs, and Cloud Service Management and Operations. This is the **cyan compute model**. At the high level the set of code repositories defined in this compute model, also named **cyan compute**, will support the following diagram:
+At the high level the set of code repositories defined in this compute model support the following diagram:
 ![](doc/cognitive-toplevelview.png)
-[Architecture Center - Cognitive Architecture](https://www.ibm.com/devops/method/content/architecture/cognitiveArchitecture#0_0)
+
+For explanation of the components of this architecture see [Architecture Center - Cognitive Architecture](https://www.ibm.com/devops/method/content/architecture/cognitiveArchitecture#0_0)
+
+The **cyan compute** implementation is aimed to support dedicated micro-services to front end Bluemix Watson Services such as Watson Conversation and Watson Discovery. This is a *broker* pattern where the microservices are responsible to do service orchestration to support some of the business requirements, and non functional requirements like resiliency, logging and other security.
+
+As of now each broker code has a simple user interface to demonstrate the implemented logic, but they also offer REST api that can be consumed by other application. The integrated 'business' application that illustrates how those services are consumed is part of the Hybrid compute model presented in this repository: [brown compute](https://github.com/ibm-cloud-architecture/refarch-integration) and specially within the 8Case Inc* portal application.
+
 ## Project Repositories
-This project leverages other projects by applying clear separation of concerns design and micro service approach.
+This project leverages other projects by applying clear separation of concerns practice and micro service approach.
 * [Cognitive Conversation Broker](https://github.com/ibm-cloud-architecture/refarch-cognitive-conversation-broker) presents the broker pattern to facade Watson Conversation to implement business oriented orchestration of services, to support resiliency, logging, failover, high availability, service management,... It also deliver a simple Angular 2 user interface to test two conversations: *IT support*, and *help in context* of a BPM process. The project includes a step by step tutorial to help you build the *IT support* chat bot.
 * [Cognitive Discovery Broker](https://github.com/ibm-cloud-architecture/refarch-cognitive-discovery-broker) presents the same broker pattern but in front of Watson Discovery. The project includes a user interface in Angular 2 to present Discovery Results, and a tutorial to build a *hurricane* getting ready knowledge base.
 * [Cognitive Extends](https://github.com/ibm-cloud-architecture/refarch-cognitive-extends)
