@@ -1,12 +1,12 @@
 # Cognitive Reference Architecture
 This project provides a reference implementation for building and running cloud based cognitive application using micro service architecture, Watson Cloud development APIs, and Cloud Service Management and Operations. This is the **cyan compute model** and aims to give best practices to develop hybrid cognitive application that accesses on-premise datasource, a set of Bluemix Watson Services.
-## Table of content
+## Table of Contents
 * [Architecture](https://github.com/ibm-cloud-architecture/refarch-cognitive#architecture)  
 * [Project Repositories](https://github.com/ibm-cloud-architecture/refarch-cognitive#project-repositories)
 * [Pre requisites](https://github.com/ibm-cloud-architecture/refarch-cognitive#pre-requisites)
 * [Skill Set](https://github.com/ibm-cloud-architecture/refarch-cognitive#expected-skill-set)
 * [Run the reference application locally](https://github.com/ibm-cloud-architecture/refarch-cognitive#run-the-reference-application-locally)
-* [Deployment in Kubernetes Cluster](https://github.com/ibm-cloud-architecture/refarch-cognitive#deploy-the-solution-as-dockerized-applications-in-kubernetes-cluster)
+* [Deployment](https://github.com/ibm-cloud-architecture/refarch-cognitive#deploy-the-solution-as-dockerized-applications-in-kubernetes-cluster)
 * [Contribute](https://github.com/ibm-cloud-architecture/refarch-cognitive#contribute)
 
 ## Architecture
@@ -64,8 +64,10 @@ Clone the peer repositories: ```./clonePeers.sh```
 * See instruction and tutorial in each project.
 
 ## Deploy the solution as dockerized applications in Kubernetes Cluster
-Each **Cyan compute** app has its own dockerfile to support docker deployment. To support high availability, monitoring, service management,... the docker containers are deployed on Bluemix Kubernetes Service. [This section](doc/cyancluster.md) describes some basic knowledge about docker and **cyan cluster** kubernetes settings.
-Each project explain how to deploy it in the **cyan cluster** for example of the Watson Discovery Broker microservice see [the note](https://github.com/ibm-cloud-architecture/refarch-cognitive-discovery-broker/blob/master/doc/wds-broker-kube.md)
+Each **Cyan compute** app has its own dockerfile and [helm](https://github.com/kubernetes/helm) chart to support Kubernetes and IBM Cloud Private deployment. To support high availability, monitoring, service management,... the docker containers are deployed on Bluemix Kubernetes Service. [This section](doc/cyancluster.md) describes some basic knowledge about docker and **cyan cluster** kubernetes settings.
+Each project explains how to deploy itself in IBM Cloud Private **cyan cluster** for example for:
+* the Watson Conversation Broker [IT support on ICP](https://github.com/ibm-cloud-architecture/refarch-cognitive-discovery-broker/blob/master/doc/icp-deploy.md)
+* the Watson Discovery Broker microservice see [the note](https://github.com/ibm-cloud-architecture/refarch-cognitive-discovery-broker/blob/master/doc/wds-broker-kube.md)
 
 ## Contribute
 We welcome your contribution. There are multiple ways to contribute: report bugs and improvement suggestion, improve documentation and contribute code.

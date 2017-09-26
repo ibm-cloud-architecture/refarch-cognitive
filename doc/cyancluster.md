@@ -33,14 +33,14 @@ Clusters are specific to an account and an organization, but are independent fro
 The following diagram illustrates the **cyan compute** cluster configuration:  
 ![](cyan-kube.png)  
 
-Nodes or Worker nodes are virtual or physical server, managed by the Kubernetes master, and hosting containerized applications. An app in production runs replicas of the app across multiple worker nodes to provide higher availability for your app. A node has a public IP address.
+Nodes or Worker nodes are virtual or physical servers, managed by the Kubernetes master, and hosting containerized applications. An app in production runs replicas of the app across multiple worker nodes to provide higher availability. A node has a public IP address.
 Every containerized app is deployed, run, and managed by a pod.
 
 Using Bluemix service and CLI we can create cluster. The following steps were done to create environment:
 * bx cs cluster-create --name cyancomputecluster
 * bx cs workers cyancomputecluster
 
-Then specific to each application.
+
 
 ### Some useful commands
 
@@ -82,7 +82,12 @@ $ kubectl describe deployment
 ```
 
 
-## Kubernetes Compendum
+## Kubernetes Compendium
 * [Official site](https://kubernetes.io)
 * [Very good tutorial from kubernetes web site](https://kubernetes.io/docs/tutorials/kubernetes-basics/scale-intro/)
 * [Garage method tutorial on Kubernetes](https://cloudcontent.mybluemix.net/devops/method/tutorials/kubernetes)
+
+## IBM Cloud Private Compendium
+* [IBM technical community](https://www.ibm.com/developerworks/community/wikis/home?lang=en#!/wiki/W1559b1be149d_43b0_881e_9783f38faaff)
+* [ICP blog](https://www.ibm.com/developerworks/community/blogs/fe25b4ef-ea6a-4d86-a629-6f87ccf4649e?lang=en)
+* [Common configuration for developer](https://github.com/ibm-cloud-architecture/refarch-integration/blob/master/docs/icp/icp-deploy.md#common-installation-tasks)

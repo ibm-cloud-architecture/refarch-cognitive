@@ -15,6 +15,9 @@ fi
 BASEREPO="https://github.com/ibm-cloud-architecture/refarch-cognitive"
 REPO_WCS="https://github.com/ibm-cloud-architecture/refarch-cognitive-conversation-broker"
 REPO_WDS="https://github.com/ibm-cloud-architecture/refarch-cognitive-discovery-broker"
+REPO_CDD="https://github.com/ibm-cloud-architecture/context-driven-dialog"
+REPO_ODM="https://github.com/ibm-cloud-architecture/refarch-cognitive-odm-model"
+REPO_CSP="https://github.com/ibm-cloud-architecture/refarch-cognitive-supplier-process"
 
 echo 'Cloning peer projects...'
 
@@ -33,6 +36,21 @@ git clone -b ${DEFAULT_BRANCH} ${REPO} ../${PROJECT}
 
 echo -e '\nClone Cognitive Compute Discovery Broker project'
 REPO=${REPO_WDS}
+PROJECT=$(echo ${REPO} | cut -d/ -f5)
+git clone -b ${DEFAULT_BRANCH} ${REPO} ../${PROJECT}
+
+echo -e '\nClone Cognitive Compute Context driven dialog'
+REPO=${REPO_CDD}
+PROJECT=$(echo ${REPO} | cut -d/ -f5)
+git clone -b ${DEFAULT_BRANCH} ${REPO} ../${PROJECT}
+
+echo -e '\nClone Cognitive ODM repo'
+REPO=${REPO_ODM}
+PROJECT=$(echo ${REPO} | cut -d/ -f5)
+git clone -b ${DEFAULT_BRANCH} ${REPO} ../${PROJECT}
+
+echo -e '\nClone Cognitive Supplier on boarding process repo'
+REPO=${REPO_CSP}
 PROJECT=$(echo ${REPO} | cut -d/ -f5)
 git clone -b ${DEFAULT_BRANCH} ${REPO} ../${PROJECT}
 
