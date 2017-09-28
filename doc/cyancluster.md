@@ -1,6 +1,10 @@
-# Cyan Compute Deployed in Kubernetes Cluster
-This article presents how the **Cyan compute** components are deployed into Bluemix Kubernetes Cluster. Each broker and web app components have a dockerfile to containerize them.
+# Cognitive Compute Deployed in Kubernetes Cluster
 
+This article presents how the **Cyan compute** components are deployed into Kubernetes Cluster. Each broker and web app components have a dockerfile to containerize them.
+
+[Back to cognitive root project](../README.md)
+
+# Value propositions
 ## Value proposition for container
 Just to recall the value of using container for the cognitive application are the following:
 * Docker ensures consistent environments from development to production. Docker containers are configured to maintain all configurations and dependencies internally.
@@ -10,7 +14,7 @@ Just to recall the value of using container for the cognitive application are th
 * Removing an app/ container is easy and won’t leave any temporary or configuration files on your host OS.
 * Docker ensures that applications that are running on containers are completely segregated and isolated from each other, granting you complete control over traffic flow and management
 
-## Value proposition for Kubernetes on Bluemix
+## Value proposition for Kubernetes
 Kubernetes is an open source system for automating the deployment, scaling, and management of containerized apps.
 * high availability 24/7
 * Deploy new version multiple times a day
@@ -21,25 +25,39 @@ Kubernetes is an open source system for automating the deployment, scaling, and 
 * Use the cluster dashboard to quickly see and manage the health of your cluster, worker nodes, and container deployments.
 * Automatic re-creation of containers in case of failures
 
-## Pre-requisites
-You need a set of tools before using Kubernetes cluster on Bluemix, but we are reusing the script from Blue Compute, so run `./install_cli.sh` (for windows use the `install_cli.bat`). This script should install for you bluemix command line interface, bluemix container service plugin, Bluemix Container Registry Service, Kubernetes CLI (kubectl), Helm CLI (helm) and yaml.
+## Value proposition for IBM Cloud Private
+The goal is to match the power of public cloud platform with the security and control of your firewall. Based on Kubernetes it offers the same benefits of kubernetes and adds more services and integration with on-premise data sources and services. Most of IBM leading middleware products can run on ICP. ICP helps developers and operations team to optimize legacy application with cloud-enabled middleware, open the data center to work with cloud services using hybrid integration, and create new cloud-native applications using devops tools and polyglot programming languages.
 
 
-## Configure the clusters
-There are multiple model for Kubernetes cluster, for demonstration purpose the lite model is used, but for production the paid model is mandatory as it brings a lot of useful features for high availability, hostname, load balancing...
+
+# Container based deployment
+We propose two deployment environments:
+* [IBM Cloud Private]()
+* [IBM Bluemix Container Service]()
+
+The following diagram illustrates those concept in ICP:  
+![](cyan-icp.png)  
+
+## IBM Cloud Private
+
+## Bluemix Container Service deployment
+
+### Pre-requisites
+You need a set of tools before using Kubernetes cluster on Bluemix: the  run `./install_cli.sh` (for windows use the `install_cli.bat`). This script should install for you bluemix command line interface, bluemix container service plugin, Bluemix Container Registry Service, Kubernetes CLI (kubectl), Helm CLI (helm) and yaml.
+
+
+## Cluster Configuration
+
+There are multiple models for Kubernetes cluster, for demonstration purpose the lite model is used, but for production the paid model is mandatory as it brings a lot of useful features for high availability, hostname, load balancing...
 
 Clusters are specific to an account and an organization, but are independent from a Bluemix space.
-
-The following diagram illustrates the **cyan compute** cluster configuration:  
-![](cyan-kube.png)  
-
-Nodes or Worker nodes are virtual or physical servers, managed by the Kubernetes master, and hosting containerized applications. An app in production runs replicas of the app across multiple worker nodes to provide higher availability. A node has a public IP address.
-Every containerized app is deployed, run, and managed by a pod.
-
 Using Bluemix service and CLI we can create cluster. The following steps were done to create environment:
 * bx cs cluster-create --name cyancomputecluster
 * bx cs workers cyancomputecluster
 
+
+Nodes or Worker nodes are virtual or physical servers, managed by the Kubernetes master, and hosting containerized applications. An app in production runs replicas of the app across multiple worker nodes to provide higher availability. A node has a public IP address.
+Every containerized app is deployed, run, and managed by a pod.
 
 
 ### Some useful commands
