@@ -1,5 +1,7 @@
 # Cognitive Reference Architecture
 This project provides a reference implementation for building and running cloud based cognitive application using micro service architecture, Watson Cloud development APIs, and Cloud Service Management and Operations. This is the **cyan compute model** and aims to give best practices to develop hybrid cognitive application that accesses on-premise datasource, a set of IBM Cloud Watson Services.
+
+Update 09/29/2107
 # Table of Contents
 * [Architecture](https://github.com/ibm-cloud-architecture/refarch-cognitive#architecture)  
 * [Project Repositories](https://github.com/ibm-cloud-architecture/refarch-cognitive#project-repositories)
@@ -13,9 +15,9 @@ This project provides a reference implementation for building and running cloud 
 At the high level, the set of code repositories defined in this computing model supports the following diagram:
 ![](doc/cyan-compute.png)
 
-For explanation of the components of this architecture see [Architecture Center - Cognitive Architecture](https://www.ibm.com/devops/method/content/architecture/cognitiveArchitecture#0_0)
+To get explanation of the components involved in this architecture see [Architecture Center - Cognitive Architecture article](https://www.ibm.com/devops/method/content/architecture/cognitiveArchitecture#0_0)
 
-The **cognitive computing solution** implementation is aimed to support dedicated micro-services to front end IBM Cloud Watson Services such as Watson Conversation and Watson Discovery in a context of business user cases. This is a *broker* pattern where the micro services are responsible to do service orchestration to support some of the business requirements, and  to address non functional requirements like resiliency, logging and security.
+The **cognitive computing solution** implementation is aimed to support dedicated micro-services to front end IBM Cloud Watson Services such as Watson Conversation and Watson Discovery, to support specific business use cases. This is a *broker* pattern where the micro services are responsible to do service orchestration to support some of the business requirements, and  to address non functional requirements like resiliency, logging and security.
 
 As of now each broker code has a simple user interface to demonstrate the implemented logic, but they also offer REST api that can be consumed by other applications. The integrated 'business' application that illustrates how those services are consumed is part of the Hybrid compute model presented in this repository: [hybrid integration solution](https://github.com/ibm-cloud-architecture/refarch-integration) and specially within the *Case Inc* portal application.
 
