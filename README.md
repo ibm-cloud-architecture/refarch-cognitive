@@ -5,8 +5,8 @@ This project provides a reference implementation for building and running cloud 
 * [Project Repositories](https://github.com/ibm-cloud-architecture/refarch-cognitive#project-repositories)
 * [Pre requisites](https://github.com/ibm-cloud-architecture/refarch-cognitive#pre-requisites)
 * [Skill Set](https://github.com/ibm-cloud-architecture/refarch-cognitive#expected-skill-set)
-* [Build and Run](https://github.com/ibm-cloud-architecture/refarch-cognitive#run-the-reference-application-locally)
-* [Resiliency](doc/resilience.md)
+* [Build and Run](https://github.com/ibm-cloud-architecture/refarch-cognitive#build-and-run)
+* [Resiliency](doc/resiliency.md)
 * [Contribute](https://github.com/ibm-cloud-architecture/refarch-cognitive#contribute)
 
 # Architecture
@@ -58,12 +58,12 @@ Clone the base repository: ``` git clone https://github.com/ibm-cloud-architectu
 
 Clone the peer repositories: ```./clonePeers.sh```  
 
-## Build and run locally each application.
-* If not already done, install the different CLI needed: bluemix, cf, and kubernetes, we deliver for you a script to install all the dependant CLI tools: see `./install_cli.sh`
+## Build and run locally
+* If not already done, install the different CLI needed: bluemix, cf, and kubectl, we deliver for you a script to install all the dependant CLI tools: see `./install_cli.sh`
 * See instruction and tutorial in each project for how to deploy and run each use case.
 
 ## Deploy the solution as dockerized applications in Kubernetes Cluster like IBM Cloud Private
-Each **Cyan compute** app has its own dockerfile and [helm](https://github.com/kubernetes/helm) chart to support Kubernetes and IBM Cloud Private deployment. [This section](doc/cyancluster.md) describes some basic knowledge about docker and **cyan cluster** kubernetes settings.
+Each **Cyan computing** app has its own dockerfile and [helm](https://github.com/kubernetes/helm) chart to support Kubernetes and IBM Cloud Private deployment. [This section](doc/cyancluster.md) describes some basic knowledge about docker and **cyan cluster** kubernetes settings and [this note](doc/install-dev-icp21.md) detail ICP CE installation.
 
 Each project explains how to deploy itself in IBM Cloud Private:
 * the Watson Conversation Broker [IT support on ICP](https://github.com/ibm-cloud-architecture/refarch-cognitive-discovery-broker/blob/master/doc/icp-deploy.md)

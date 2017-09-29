@@ -2,6 +2,8 @@
 
 A resilient system keeps processing transactions, even when there are transient impulses, persistent stresses, or component failures disrupting normal processing.
 
+[Back to cognitive root project](../README.md)
+
 ## The challenges
 Watson Services are deployed in data center with support for high availability by using two node cluster. It may be needed to add a second data center and replicates service configuration so services are available and can be consumed by your own web application. As distribute environment. some failure may happen. You need to control the interactions with those services and avoid the traditional production issues like cascading failures.
 

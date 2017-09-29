@@ -1,11 +1,68 @@
 # Install a development environment with IBM Cloud Private 2.1
 This is a quick summary of what you may do to install a ICP 2.1 CE development host on a single VM with Ubuntu 64 bits 16.10.
 
+The developer environment may look like the following diagram, for a developer on Mac and a VM ubuntu image (Windows will look similar)
+![](dev-env.png)
+
+A developer needs to have on his host the following components:
+* [docker]()
+* [kubectl]()
+* helm
+* VM player (or can use vagrant) to install and run ubuntu machine
+
+# Preparing your laptop
+## Install docker
+If you do not have docker install on your development machine, we will not describe it again ;-). See [docker download](https://docs.docker.com/engine/installation/). You need it on the build server where you have Jenkins or other CI tool.
+
+## Install Kubectl
+You need to have kubectl on your development computer, on build server and on the ICP development server.
+* Install kubectl from ibm image.
+
+```
+docker run -e LICENSE=accept --net=host -v /usr/local/bin:/data ibmcom/kubernetes:v1.7.3 cp /kubectl /data
+```
+the --net=host means to use the host network stack and not the one coming from the container.  -v is for mounting volume: the local /usr/local/bin is mounted to the /data in the container, so the command to cp /kubectl directory inside the container, to /data inside the container will in fact modify the host /usr/local/bin with kubectl CLI. (complex for a simple tar -xvf... but this is our new life...)
+
+see [Docker volume notes](https://docs.docker.com/engine/admin/volumes/volumes/)
+
+* Access the ICP kubernetes cluster information from the ICP Console.
+From the Client configuration menu under your userid on the top right of the main console panel:
+
+![](kube-cli-settings.png)
+
+Copy and paste in a script or in a terminal to execute those commands. So now a command like:
+```
+kubectl cluster-info
+```  
+returns the cluster information within ICP.
+
+## Install helm
+You can install helm from the helm web site or using Helm packaged with ICP:
+```
+ docker run -t --entrypoint=/bin/cp -v /usr/local/bin:/data ibmcom/helm:v2.5.0  /helm /data/
+```
+Command very similar to the one to install kubectl. *--endpoint=* specifies the command to execute when the container starts. Same as *CMD*
+
+Init the client side for helm
+```
+helm init --client-only
+```
+
+If you get the kubectl connected to ICP cluster (as presented in previous figure), then the following command should give you the version of the **Tiller** server running in ICP.
+```
+$ helm version
+```
+If you have configured kubeclt to connect to the ICP master server, the above command should return a client and server version.
+```
+Client: &version.Version{SemVer:"v2.5.0", GitCommit:"012cb0ac1a1b2f888144ef5a67b8dab6c2d45be6", GitTreeState:"clean"}
+Server: &version.Version{SemVer:"v2.5.0", GitCommit:"012cb0ac1a1b2f888144ef5a67b8dab6c2d45be6", GitTreeState:"clean"}
+
+```
+
 For a full tutorial on how to install ICP with 5 hosts see [this note](https://github.com/ibm-cloud-architecture/refarch-privatecloud/blob/master/Installing_ICP_on_prem.md)
 
 See [ICP 2.1 product documentation](https://www.ibm.com/support/knowledgecenter/SSBS6K_2.1.0/installing/install_containers_CE.html) to get other details.
 
-We still found some tricks to be consider so here are our steps:
 ## Ubuntu Specifics:
 * The expected minimum resource are: CPUs: 1 Memory: 16GB Disk: 60GB (Thin Provisioned)
 * Install ubuntu following the step by step wizard, create a user with admin privilege
@@ -48,7 +105,7 @@ Copy the public key to the root.
 ```
 $ ssh-copy-id -i .ssh/id_rsa root@ubuntu
 ```
-Then you should be able to ssh via root too
+Then you should be able to ssh root user to the guest machine.
 * Install NTP to keep time sync
 ```
 apt-get install -y ntp
@@ -71,8 +128,8 @@ apt-get install -y linux-image-extra-$(uname -r) linux-image-extra-virtual
   $ ufw status
   $ sudo ufw disable
   ```
-## Install docker
-If you do not have it.
+## Install docker on the ubuntu machine
+If you do not have it on the linux machine
 * Install docker repository
   ```
    $ apt-get install -y apt-transport-https ca-certificates curl software-properties-common
@@ -99,12 +156,12 @@ If you do not have it.
    $ cat /etc/group
    # add user
    $ usermod -G docker -a usermod
-   # relogin the user to get the group assignment at the session level
+   # re-login the user to get the group assignment at the session level
    ```
 
 * Boot and log as root user
 
-## IBM Cloud Private CE
+## IBM Cloud Private CE on the ubuntu machine
 * Get the ICP  installer docker image using the following command
  ```
  $ sudo su -
@@ -154,19 +211,32 @@ Status: Downloaded newer image for ibmcom/icp-inception:2.1.0-beta-2
 
   ![](icp-dashboard.png)
 
-  ## Some common issues:
+  # Some common issues:
   ### hostname not resolved
   ```
-   fatal: [...] => Failed to connect to the host via ssh: ssh: Could not resolve hostname ...: Name or service not known
+   fatal: [...] => Failed to connect to the host via ssh: ssh: Could not resolve hostname ...:
+   Name or service not known
   ```
   * verify the hostname match the ip address in /etc/hosts
   * be sure to start the installation from the folder with the hosts file/ (cluster) or modify $(pwd) to $(pwd)/cluster
 
   ```
-  fatal: [192.168.1.147] => Failed to connect to the host via ssh: Permission denied (publickey,password).
+  fatal: [192.168.1.147] => Failed to connect to the host via ssh:
+  Permission denied (publickey,password).
   ```
 This is a problem of accessing root user during the installation. Be sure to authorize root login, (ssh_config file), that the ssh_key is in the root user home/.ssh. See [above](https://github.com/ibm-cloud-architecture/refarch-cognitive/blob/master/doc/install-dev-icp21.md#ubuntu-specifics)
 
+While login from a developer's laptop.
 ```
-FAILED - RETRYING: TASK: master : Ensuring that the Cloudant Database is ready (9 retries left).
+$ docker login cluster.icp:8500
+>
+Error response from daemon: Get https://cluster.icp:8500/v2/: net/http:
+request canceled while waiting for connection (Client.Timeout exceeded while awaiting headers)
 ```
+Be sure the cluster.icp hostname is mapped to the host's IP address in the local /etc/hosts
+
+```
+$ docker login cluster.icp:8500
+Error response from daemon: Get https://cluster.icp:8500/v2/: x509: certificate signed by unknown authority
+```
+The local docker machine running on the developer's laptop needs to access certificate. The certificates are in the logged user **~/.docker** folder. This folder should have a **certs.d** folder and one folder per remote server, you need to access. So the cluster.icp:8500/ca.crt file needs to be copied there too.

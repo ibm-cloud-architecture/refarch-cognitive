@@ -1,6 +1,6 @@
-# Cognitive Compute Deployed in Kubernetes Cluster
+# Cognitive Computing Deployed in Kubernetes Cluster
 
-This article presents how the **Cyan compute** components are deployed into Kubernetes Cluster. Each broker and web app components have a dockerfile to containerize them.
+This article presents how the **Cyan computing** components are deployed into Kubernetes Cluster platform like IBM Cloud Private or Bluemix Container service. Each broker and web app components have a dockerfile to containerize them, and a helm chart definition to deploy to Tiller server.
 
 [Back to cognitive root project](../README.md)
 
@@ -35,26 +35,25 @@ We propose two deployment environments:
 * [IBM Cloud Private]()
 * [IBM Bluemix Container Service]()
 
-The following diagram illustrates those concept in ICP:  
+The following diagram illustrates how the *cyan computing* components can run within pods but accessing public Watson services and enterprise data sources:  
 ![](cyan-icp.png)  
 
-## IBM Cloud Private
+## Pre-requisites
+You need a set of tools before using Kubernetes cluster on Bluemix: the  run `./install_cli.sh` (for windows use the `install_cli.bat`). This script should install for you bluemix command line interface, bluemix container service plugin, Bluemix Container Registry Service, Kubernetes CLI (kubectl), Helm CLI (helm).
+
+## IBM Cloud Private deployment
+Typical ICP environment will include multiple installation, one per staging environment. For development purpose we are detailing in [this note](doc/install-dev-icp21.md) how to set up ICP Community Edition.
 
 ## Bluemix Container Service deployment
 
-### Pre-requisites
-You need a set of tools before using Kubernetes cluster on Bluemix: the  run `./install_cli.sh` (for windows use the `install_cli.bat`). This script should install for you bluemix command line interface, bluemix container service plugin, Bluemix Container Registry Service, Kubernetes CLI (kubectl), Helm CLI (helm) and yaml.
+### Cluster Configuration
 
-
-## Cluster Configuration
-
-There are multiple models for Kubernetes cluster, for demonstration purpose the lite model is used, but for production the paid model is mandatory as it brings a lot of useful features for high availability, hostname, load balancing...
+There are multiple models for Kubernetes cluster, for demonstration purpose the *lite* model is used, but for production the paid model is mandatory as it brings a lot of useful features for high availability, load balancing...
 
 Clusters are specific to an account and an organization, but are independent from a Bluemix space.
 Using Bluemix service and CLI we can create cluster. The following steps were done to create environment:
 * bx cs cluster-create --name cyancomputecluster
 * bx cs workers cyancomputecluster
-
 
 Nodes or Worker nodes are virtual or physical servers, managed by the Kubernetes master, and hosting containerized applications. An app in production runs replicas of the app across multiple worker nodes to provide higher availability. A node has a public IP address.
 Every containerized app is deployed, run, and managed by a pod.
@@ -76,7 +75,7 @@ $ bx cs clusters
 $ bx cs workers cyancomputecluster
 ```
 
-When a container is deployed the following kubeclt commands are used:
+When a container is deployed the following kubectl commands are used:
 ```
 $ kubectl get pods
 
