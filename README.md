@@ -68,14 +68,15 @@ Clone the peer repositories: ```./clonePeers.sh```
 Each **Cyan computing** app has its own dockerfile and [helm](https://github.com/kubernetes/helm) chart to support Kubernetes and IBM Cloud Private deployment. [This section](doc/cyancluster.md) describes some basic knowledge about docker and **cyan cluster** kubernetes settings and [this note](doc/install-dev-icp21.md) detail ICP CE installation.
 
 Each project explains how to deploy itself in IBM Cloud Private:
-* the Watson Conversation Broker [IT support on ICP](https://github.com/ibm-cloud-architecture/refarch-cognitive-discovery-broker/blob/master/doc/icp-deploy.md)
+* the Watson Conversation Broker [IT support on ICP](https://github.com/ibm-cloud-architecture/refarch-cognitive-conversation-broker/blob/master/doc/icp-deploy.md)
 * the Watson Discovery Broker micro-service see [the note](https://github.com/ibm-cloud-architecture/refarch-cognitive-discovery-broker/blob/master/doc/wds-broker-kube.md)
 
 # Compendium
 * [Watson Cloud platform documentation](https://www.ibm.com/watson/developercloud/doc/index.html)
 * [Cognitive @ Architecture center](https://www.ibm.com/devops/method/content/architecture/cognitiveArchitecture/0_0)
 * [Cognitive concept 101](https://www.ibm.com/devops/method/content/code/practice-cognitive-101/)
-* [IBM Jounrney samples](https://developer.ibm.com/code/journey/category/artificial-intelligence/)
+* [DeveloperWorks Cognitive computing](https://www.ibm.com/developerworks/learn/cognitive/index.html)
+* [IBM Journey samples](https://developer.ibm.com/code/journey/category/artificial-intelligence/)
 
 # Contribute
 We welcome your contribution. There are multiple ways to contribute: report bugs and improvement suggestion, improve documentation and contribute code.

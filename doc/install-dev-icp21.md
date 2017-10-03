@@ -5,10 +5,12 @@ The developer environment may look like the following diagram, for a developer o
 ![](dev-env.png)
 
 A developer needs to have on his host the following components:
-* [docker]()
-* [kubectl]()
-* helm
+* [docker](https://github.com/ibm-cloud-architecture/refarch-cognitive/blob/master/doc/install-dev-icp21.md#install-docker)
+* [kubectl](https://github.com/ibm-cloud-architecture/refarch-cognitive/blob/master/doc/install-dev-icp21.md#install-kubectl)
+* [Helm](https://github.com/ibm-cloud-architecture/refarch-cognitive/blob/master/doc/install-dev-icp21.md#install-helm))
 * VM player (or can use vagrant) to install and run ubuntu machine
+
+If you need to assess the dockerhub IBM public image use [docker hub explorer](https://hub.docker.com/explore/)
 
 # Preparing your laptop
 ## Install docker
@@ -237,6 +239,9 @@ Be sure the cluster.icp hostname is mapped to the host's IP address in the local
 
 ```
 $ docker login cluster.icp:8500
-Error response from daemon: Get https://cluster.icp:8500/v2/: x509: certificate signed by unknown authority
+Error response from daemon: Get https://cluster.icp:8500/v2/: x509: certificate signed
+by unknown authority
 ```
+
+
 The local docker machine running on the developer's laptop needs to access certificate. The certificates are in the logged user **~/.docker** folder. This folder should have a **certs.d** folder and one folder per remote server, you need to access. So the cluster.icp:8500/ca.crt file needs to be copied there too.
