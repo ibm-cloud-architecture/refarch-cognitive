@@ -4,13 +4,13 @@ This is a quick summary of what you may do to install a ICP 2.1 CE development h
 The developer environment may look like the following diagram, for a developer on Mac and a VM ubuntu image (Windows will look similar)
 ![](dev-env.png)
 
-A developer needs to have on his host the following components:
-* [docker](https://github.com/ibm-cloud-architecture/refarch-cognitive/blob/master/doc/install-dev-icp21.md#install-docker)
-* [kubectl](https://github.com/ibm-cloud-architecture/refarch-cognitive/blob/master/doc/install-dev-icp21.md#install-kubectl)
-* [Helm](https://github.com/ibm-cloud-architecture/refarch-cognitive/blob/master/doc/install-dev-icp21.md#install-helm))
-* VM player (or can use vagrant) to install and run ubuntu machine
+A developer needs to have on his development environment the following components:
+* [Docker](#install-docker)
+* [Kubectl](#install-kubectl)
+* [Helm](#install-helm)
+* A VM player to install and run ubuntu machine
 
-If you need to assess the dockerhub IBM public image use [docker hub explorer](https://hub.docker.com/explore/)
+If you need to access the dockerhub IBM public image, use [docker hub explorer](https://hub.docker.com/explore/)
 
 # Preparing your laptop
 ## Install docker
@@ -61,7 +61,6 @@ Server: &version.Version{SemVer:"v2.5.0", GitCommit:"012cb0ac1a1b2f888144ef5a67b
 
 ```
 
-For a full tutorial on how to install ICP with 5 hosts see [this note](https://github.com/ibm-cloud-architecture/refarch-privatecloud/blob/master/Installing_ICP_on_prem.md)
 
 See [ICP 2.1 product documentation](https://www.ibm.com/support/knowledgecenter/SSBS6K_2.1.0/installing/install_containers_CE.html) to get other details.
 
