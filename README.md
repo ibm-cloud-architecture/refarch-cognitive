@@ -8,12 +8,12 @@ Update 09/29/2107
 * [Pre requisites](https://github.com/ibm-cloud-architecture/refarch-cognitive#pre-requisites)
 * [Skill Set](https://github.com/ibm-cloud-architecture/refarch-cognitive#expected-skill-set)
 * [Build and Run](https://github.com/ibm-cloud-architecture/refarch-cognitive#build-and-run)
-* [Resiliency](doc/resiliency.md)
+* [Resiliency](docs/resiliency.md)
 * [Contribute](https://github.com/ibm-cloud-architecture/refarch-cognitive#contribute)
 
 # Architecture
 At the high level, the set of code repositories defined in this computing model supports the following diagram:
-![](doc/cyan-compute.png)
+![](docs/cyan-compute.png)
 
 To get explanation of the components involved in this architecture see [Architecture Center - Cognitive Architecture article](https://www.ibm.com/devops/method/content/architecture/cognitiveArchitecture#0_0)
 
@@ -65,7 +65,7 @@ Clone the peer repositories: ```./clonePeers.sh```
 * See instruction and tutorial in each project for how to deploy and run each use case.
 
 ## Deploy the solution as dockerized applications in Kubernetes Cluster like IBM Cloud Private
-Each **Cyan computing** app has its own dockerfile and [helm](https://github.com/kubernetes/helm) chart to support Kubernetes and IBM Cloud Private deployment. [This section](doc/cyancluster.md) describes some basic knowledge about docker and **cyan cluster** kubernetes settings and [this note](doc/install-dev-icp21.md) detail ICP CE installation.
+Each **Cyan computing** app has its own dockerfile and [helm](https://github.com/kubernetes/helm) chart to support Kubernetes and IBM Cloud Private deployment. [This section](docs/cyancluster.md) describes some basic knowledge about docker and **cyan cluster** kubernetes settings and [this note](docs/ICP/README.md) detail ICP CE installation.
 
 Each project explains how to deploy itself in IBM Cloud Private:
 * the Watson Conversation Broker [IT support on ICP](https://github.com/ibm-cloud-architecture/refarch-cognitive-conversation-broker/blob/master/doc/icp-deploy.md)
