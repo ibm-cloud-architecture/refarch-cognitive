@@ -280,6 +280,11 @@ platform-ui is running at https://192.168.27.100:8001/api/v1/proxy/namespaces/ku
 
 To further debug and diagnose cluster problems, use 'kubectl cluster-info dump'.
 ```
+## Try to do 'kubectl cluster-info': failed: error: You must be logged in to the server (the server has asked for the client to provide credentials)
+Be sure to have use the settings from the 'configure client'.
+Be sure the cluster name / IP address are mapped in /etc/hosts
+Be sure to have a ca.crt into
+Use the `bx pr login -a <clustername>/api -u admin` command
 
 ## Verify Helm is connected to Tiller server running on ICP
 If you get the kubectl connected to ICP cluster (as presented in previous figure), then the following command should give you the version of the **Tiller** server running in ICP.
@@ -323,9 +328,6 @@ $ docker login mycluster.icp:8500
 Error response from daemon: Get https://mycluster.icp:8500/v2/: x509: certificate signed by unknown authority
 ```
 
-The local docker machine running on the developer's laptop needs to access certificate. The certificates are in the logged user **~/.docker** folder. This folder should have a **certs.d** folder and one folder per remote server, you need to access. So the mycluster.icp:8500/ca.crt file needs to be copied there too.
-
-
 Go to your docker engine configuration and add the remote registry as an insecure one. On MAC you select the docker > preferences > Advanced meny and then add the remote master name
 ```json
 {
@@ -337,3 +339,5 @@ Go to your docker engine configuration and add the remote registry as an insecur
   ]
 }
 ```
+
+You can also verify the certificates are in the logged user **~/.docker** folder. This folder should have a **certs.d** folder and one folder per remote server, you need to access. So the mycluster.icp:8500/ca.crt file needs to be copied there too.
