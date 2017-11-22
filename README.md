@@ -68,9 +68,9 @@ Clone the peer repositories: ```./clonePeers.sh```
 ## Deploy the solution as dockerized applications in Kubernetes Cluster like IBM Cloud Private
 Each **Cyan computing** app has its own dockerfile and [helm](https://github.com/kubernetes/helm) chart to support Kubernetes and IBM Cloud Private deployment. [This section](docs/cyancluster.md) describes some basic knowledge about docker and **cyan cluster** kubernetes settings and [this note](docs/ICP/README.md) detail ICP CE installation.
 
-Each project explains how to deploy itself in IBM Cloud Private:
-* the Watson Conversation Broker [IT support on ICP](https://github.com/ibm-cloud-architecture/refarch-cognitive-conversation-broker/blob/master/doc/icp-deploy.md)
-* the Watson Discovery Broker micro-service see [the note](https://github.com/ibm-cloud-architecture/refarch-cognitive-discovery-broker/blob/master/doc/wds-broker-kube.md)
+Each project includes a 'how to deploy to IBM Cloud Private' tutorial:
+* the [Watson Conversation Broker on ICP](https://github.com/ibm-cloud-architecture/refarch-cognitive-conversation-broker/blob/master/doc/icp/README.md)
+* the [Watson Discovery Broker micro-service on ICP](https://github.com/ibm-cloud-architecture/refarch-cognitive-discovery-broker/blob/master/doc/wds-broker-kube.md)
 
 # Compendium
 * [Watson Cloud platform documentation](https://www.ibm.com/watson/developercloud/doc/index.html)

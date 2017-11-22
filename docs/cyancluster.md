@@ -32,17 +32,20 @@ The goal is to match the power of public cloud platform with the security and co
 
 # Container based deployment
 We propose two deployment environments:
-* [IBM Cloud Private]()
+* [IBM Cloud Private](#ibm-cloud-private-deployment)
 * [IBM Bluemix Container Service]()
 
 The following diagram illustrates how the *cyan computing* components can run within pods but accessing public Watson services and enterprise data sources:  
 ![](cyan-icp.png)  
 
 ## Pre-requisites
-You need a set of tools before using Kubernetes cluster on Bluemix: the  run `./install_cli.sh` (for windows use the `install_cli.bat`). This script should install for you bluemix command line interface, bluemix container service plugin, Bluemix Container Registry Service, Kubernetes CLI (kubectl), Helm CLI (helm).
+You need a set of tools before using Kubernetes cluster on Bluemix: run `./install_cli.sh` script (for windows use the `install_cli.bat`). This script should install the bluemix command line interface, bluemix container service plugin, Bluemix Container Registry Service, Kubernetes CLI (kubectl), Helm CLI (helm).
 
 ## IBM Cloud Private deployment
-Typical ICP environment will include multiple installation, one per staging environment. For development purpose we are detailing in [this note](doc/install-dev-icp21.md) how to set up ICP Community Edition.
+Typical ICP environment will include multiple installations, one per staging environment. For development purpose we are detailing in [this note](doc/icp/README.md) how to install and set up ICP Community Edition.
+
+Then each project describes its own Helm configuration and deployment command:
+* [Watson conversation broker](https://github.com/ibm-cloud-architecture/refarch-cognitive-conversation-broker/blog/master/docs/doc/icp/README.md)
 
 ## Bluemix Container Service deployment
 
