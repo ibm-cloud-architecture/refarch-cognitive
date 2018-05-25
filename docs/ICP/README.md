@@ -1,6 +1,6 @@
 # Install a development environment with IBM Cloud Private 2.1
-This is a quick summary of what you may do to install a ICP 2.1 CE development host on a single VM with Ubuntu 64 bits 16.10.
-Updated 10/18/2107
+
+Updated May 09 2018
 
 The developer environment may look like the following diagram, for a developer on Mac and a VM ubuntu image (Windows will look similar)
 ![](dev-env.png)
