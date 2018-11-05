@@ -1,7 +1,7 @@
 # Cognitive Reference Architecture
 This project provides a reference implementation for building and running cloud based cognitive application using micro service architecture, Watson Cloud development APIs, and Cloud Service Management and Operations. This is the **cyan compute model** and aims to give best practices to develop hybrid cognitive application that accesses on-premise datasource, a set of IBM Cloud Watson Services.
 
-Update 09/29/2107
+Update 11/05/2018
 # Table of Contents
 * [Architecture](https://github.com/ibm-cloud-architecture/refarch-cognitive#architecture)  
 * [Project Repositories](https://github.com/ibm-cloud-architecture/refarch-cognitive#project-repositories)
@@ -9,6 +9,7 @@ Update 09/29/2107
 * [Skill Set](https://github.com/ibm-cloud-architecture/refarch-cognitive#expected-skill-set)
 * [Build and Run](https://github.com/ibm-cloud-architecture/refarch-cognitive#build-and-run)
 * [Resiliency](docs/resiliency.md)
+* [Deploy Watson Assistant on ICP](docs/ICP/assistant-icp.md)
 * [Contribute](https://github.com/ibm-cloud-architecture/refarch-cognitive#contribute)
 
 # Architecture
