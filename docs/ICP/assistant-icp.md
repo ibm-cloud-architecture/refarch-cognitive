@@ -4,10 +4,102 @@ Update 11/05/2018
 
 The product installation instructions are [here](https://console.bluemix.net/docs/services/assistant-icp/install.html#install).
 
-What we have to adapt:
+*Some items to be sure to know*
+* Deploy only on x86 architecture
+* At least 4 worker nodes
+
+What we have to adapt some of the steps to deploy to our vSphere environment:
+
 * Download the Watson Assistant product from Passport Advantage (Linux 64bit code CNX12EN) on a NFS server.
 * We already have an ICP 2.1.0.3
 * For production environment the ICP needs to have 3 master nodes, 3 proxies and more than 4 worker nodes. Watson Assistant is deployed only on worker nodes.
 * We install only English language  
+* Get a NFS server or Ceph cluster for persistence. The size of the allocated disk on the NFS server was 4TB.
+* As we have limited access to the DNS server
+* create 4 folders in the NFS server `/storage/assistantpvs` named pv01, pv02, pv03, pv04
+* on each worker node 01 to 04 create the mount point /tmp/assitantpvs/pv01 to pv04 accordingly.
+* mount `sudo mount 172.16.253.184:/storage/assistantpvs/pv01 /tmp/assistantpvs/pv01 on worker node 01. Do the same for other worker node.
+* do the same for a folder minio on worker node 4.  `sudo mount 172.16.253.184:/storage/assistantpvs/minio /tmp/assistantpvs/minio`
+* Use the manifest `assistant-pvs.yaml` to add the PV in the cluster.
+* `kubectl get pv ` should return
+```
+etcd-pv01    10Gi       RWO            Recycle  
+etcd-pv02    10Gi       RWO            Recycle
+etcd-pv03    10Gi       RWO            Recycle                                       
+minio-pv01   20Gi       RWO            Recycle   
+mongo-pv01   80Gi       RWO            Recycle  
+mongo-pv02   80Gi       RWO            Recycle    
+mongo-pv03   80Gi       RWO            Recycle    
+postgress-pv01  10Gi       RWO            Recycle  
+postgress-pv02  10Gi       RWO            Recycle    
+postgress-pv03  10Gi       RWO            Recycle  
+```
+
+* Upload the product images to the internal docker repository: `bx pr load-ppa-archive --archive IWAICP_V1.0.0.1.tar.gz --clustername green-with-envy-cluster.icp --namespace conversation`
+
+ The traces should list at least the following successful messages:
+ ```
+ Expanding archive
+ OK
+ Loaded helm chart
+ OK
+ Synch charts
+ Synch started
+ OK
+ Archive finished processing
+ ```
+ If for any reason you got this message: `unauthorized: authentication required`, be to be logged and helm is working and connected to the Tiller server. You need to login and be sure helm works. Something like the following commands help:
+ ```
+bx pr login -a https://172.16.50.154:8443 --skip-ssl-validation docker login http://172.16.50.154:8500
+  helm init --client-only
+ ```
+
+ * Once done be sure to synchronize the Helm repositories, using the ICP Console. Ensure the local-charts repo is defined. Something like:
+  `local-charts	https://green-with-envy-cluster.icp:8443/helm-repo/charts`
+  * Get To the ICP catalog to search for Watson:   
+  ![](wa-catalog.png)  
+  * if you install for production be sure to define two replicas per microservice. (1 otherwise)
+  * Specify the following parameters:
+
+| parameter | value |  
+| --- | --- |
+| Release name | watson-assistant-prod |
+| Target Namespace | conversation |
+| language | select English, unselect Czech|
+| Create Cloud Object Store COS | must be selected |
+| Create Redis | must be selected |
+| Redis Password | |
+| Create Postgres | must be selected |
+| Postgres Admin Password | |  
+| Create Database | must be selected |
+| Create Schema | must be selected |
+| Postgres User Password | |
+| Create Etcd cluster | must be selected |
+| Create MongoDB | must be selected |
+| MongoDB Admin user name | admin |
+| MongoDB Admin password |  |
 
 ### New Deployment Diagram In Hybrid Cloud
+The Watson Assistant Helm chart installs the following microservices:
+
+* Dialog: Dialog runtime, or user-chat capability.
+* Store: API endpoints.
+* CLU (Conversational Language Understanding): Interface for store to communicate with the back-end to initiate ML training.
+* Master: Controls the lifecycle of underlying intent and entity models.
+* TAS: Manages services model inferencing.
+* SLAD: Manages service training capabilities.
+* SIREG - Manages tokenization and system entity capabilities.
+* ed-mm: Manages system entity capabilities.
+* Tooling: Provides the developer user interface.
+
+and the following stores:
+
+* PostgreSQL: Stores training data.
+* MongoDB: Stores word vectors.
+* Redis: Caches data.
+* etcd: Manages service registration and discovery.
+* Minio: Stores CLU models.
+
+The following diagram illustrates the pod allocation:   
+
+![]()

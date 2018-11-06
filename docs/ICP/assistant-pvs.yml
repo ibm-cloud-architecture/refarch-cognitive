@@ -1,0 +1,179 @@
+
+kind: PersistentVolume
+apiVersion: v1
+metadata:
+  name: postgress-pv01
+  labels:
+    type: nfs
+spec:
+  persistentVolumeReclaimPolicy: Recycle
+  capacity:
+    storage: 10Gi
+  volumeMode: Filesystem
+  accessModes:
+    - ReadWriteOnce
+  nfs:
+    server: "172.16.253.184"
+    path: "/storage/assistantpvs/pv01/postgress1"
+
+---
+kind: PersistentVolume
+apiVersion: v1
+metadata:
+  name: postgress-pv02
+  labels:
+    type: nfs
+spec:
+  persistentVolumeReclaimPolicy: Recycle
+  capacity:
+    storage: 10Gi
+  volumeMode: Filesystem
+  accessModes:
+    - ReadWriteOnce
+  nfs:
+    server: "172.16.253.184"
+    path: "/storage/assistantpvs/pv02/postgress2"
+---
+kind: PersistentVolume
+apiVersion: v1
+metadata:
+  name: postgress-pv03
+  labels:
+    type: nfs
+spec:
+  persistentVolumeReclaimPolicy: Recycle
+  capacity:
+    storage: 10Gi
+  volumeMode: Filesystem
+  accessModes:
+    - ReadWriteOnce
+  nfs:
+    server: "172.16.253.184"
+    path: "/storage/assistantpvs/pv03/postgress3"
+
+
+---
+kind: PersistentVolume
+apiVersion: v1
+metadata:
+  name: etcd-pv01
+  labels:
+    type: nfs
+spec:
+  persistentVolumeReclaimPolicy: Recycle
+  capacity:
+    storage: 10Gi
+  volumeMode: Filesystem
+  accessModes:
+    - ReadWriteOnce
+  nfs:
+    server: "172.16.253.184"
+    path: "/storage/assistantpvs/pv01/etcd1"
+
+---
+kind: PersistentVolume
+apiVersion: v1
+metadata:
+  name: etcd-pv02
+  labels:
+    type: nfs
+spec:
+  persistentVolumeReclaimPolicy: Recycle
+  capacity:
+    storage: 10Gi
+  volumeMode: Filesystem
+  accessModes:
+    - ReadWriteOnce
+  nfs:
+    server: "172.16.253.184"
+    path: "/storage/assistantpvs/pv02/etcd2"
+
+---
+kind: PersistentVolume
+apiVersion: v1
+metadata:
+  name: etcd-pv03
+  labels:
+    type: nfs
+spec:
+  persistentVolumeReclaimPolicy: Recycle
+  capacity:
+    storage: 10Gi
+  volumeMode: Filesystem
+  accessModes:
+    - ReadWriteOnce
+  nfs:
+    server: "172.16.253.184"
+    path: "/storage/assistantpvs/pv03/etcd3"
+
+---
+kind: PersistentVolume
+apiVersion: v1
+metadata:
+  name: mongo-pv01
+  labels:
+    type: nfs
+spec:
+  persistentVolumeReclaimPolicy: Recycle
+  capacity:
+    storage: 80Gi
+  volumeMode: Filesystem
+  accessModes:
+    - ReadWriteOnce
+  nfs:
+    server: "172.16.253.184"
+    path: "/storage/assistantpvs/pv01/mongo1"
+
+---
+kind: PersistentVolume
+apiVersion: v1
+metadata:
+  name: mongo-pv02
+  labels:
+    type: nfs
+spec:
+  persistentVolumeReclaimPolicy: Recycle
+  capacity:
+    storage: 80Gi
+  volumeMode: Filesystem
+  accessModes:
+    - ReadWriteOnce
+  nfs:
+    server: "172.16.253.184"
+    path: "/storage/assistantpvs/pv02/mongo2"
+
+---
+kind: PersistentVolume
+apiVersion: v1
+metadata:
+  name: mongo-pv03
+  labels:
+    type: nfs
+spec:
+  persistentVolumeReclaimPolicy: Recycle
+  capacity:
+    storage: 80Gi
+  volumeMode: Filesystem
+  accessModes:
+    - ReadWriteOnce
+  nfs:
+    server: "172.16.253.184"
+    path: "/storage/assistantpvs/pv03/mongo3"
+
+---
+kind: PersistentVolume
+apiVersion: v1
+metadata:
+  name: minio-pv01
+  labels:
+    type: nfs
+spec:
+  persistentVolumeReclaimPolicy: Recycle
+  capacity:
+    storage: 20Gi
+  volumeMode: Filesystem
+  accessModes:
+    - ReadWriteOnce
+  nfs:
+    server: "172.16.253.184"
+    path: "/storage/assistantpvs/minio"
