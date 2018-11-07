@@ -1,0 +1,210 @@
+global:
+  schConfigTemplate: assistant.sch.chart.config.values
+  deploymentType: Development
+  icpUrl: 'green-with-envy-cluster.icp'
+  languages:
+    english: true
+    german: false
+    arabic: false
+    spanish: false
+    french: false
+    italian: false
+    japanese: false
+    korean: false
+    portuguese: false
+    czech: false
+    dutch: false
+    chineseTraditional: false
+    chineseSimplified: false
+  cos:
+    create: true
+    accessKey: icpAccess
+    secretKey: icpSecret
+    bucket: icp
+    schema: ""
+    hostname: ""
+    port: 0
+  redis:
+    create: true
+    hostname: ""
+    port: 6379
+    password: icpPassword
+  postgres:
+    create: true
+    hostname: ""
+    port: 5432
+    adminName: admin
+    adminPassword: b6d0f8a3dad8eee764e27745cce8052d
+    adminDatabase: postgres
+    sslMode: allow
+    serverCertificate: ""
+    database:
+      create: true
+      createSchema: true
+    store:
+      database: ""
+      user: ""
+      password: icpStorePasswd1
+  etcd:
+    create: true
+    authentication:
+      enable: true
+      user: root
+      password: abraka_dabra
+    connection: ""
+  mongodb:
+    create: true
+    hostname: ""
+    port: 27017
+    auth:
+      enabled: true
+      adminUser: admin
+      adminPassword: admin
+    tls:
+      enabled: true
+      cacert: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUNvRENDQVlnQ0NRRDRRcFlPZ3crbXNqQU5CZ2txaGtpRzl3MEJBUXNGQURBU01SQXdEZ1lEVlFRRERBZDYKYUdWdVozbHBNQjRYRFRFNE1EY3pNVEUxTURVME1sb1hEVFExTVRJeE5qRTFNRFUwTWxvd0VqRVFNQTRHQTFVRQpBd3dIZW1obGJtZDVhVENDQVNJd0RRWUpLb1pJaHZjTkFRRUJCUUFEZ2dFUEFEQ0NBUW9DZ2dFQkFPSnBDZjBaCldUaEQrZ01HVVZ6Z00yMk5vbC80MWlzN3RjWU8rb1dVcDhVU0pzUFlOM1RoTXpxSmJ5Wm8wUHhsQWo0NGFlZHkKZ3lwWHd0S0pqaENwL2EzWVJJY1R3V0NXNHdQR2pDOTkvMi9yOElxV3N1a2lTN2YycFJ1VnBhUUZBOThzdUo2Rwo3UGExa1RlTEpORC9wa2VXcVJ0aGprUnU2WnJveGV1N0JZUUR1NVQ0L3lUSG5xRGJ4VFlqMHZIUFJnK2o1OVNGCndRUmRvZFprbTRvaWNpbDhpOUwrcEdlTGQvSGUwTjY4MnhmdUpMNlZ1MmcrRTRyeXhqbjNXemVkYXM3ZVE0WjkKdFY1ZVBkdjgwaEZ3aER4T0hPNHg0aDhIVmozaFNoRWQxcXgrSzFwanl3OEdqUzl4RkxzT3d3YWYrMU5BaVVoVgpsYWttZDVIZWFyK0RKZ1VDQXdFQUFUQU5CZ2txaGtpRzl3MEJBUXNGQUFPQ0FRRUFPLzZPeGFSdm00QVljWkdxCmJNVk5wZTJmb0NtbmlNS0J0QzZ5SFZxK1RqNGtVMjg2TVpUZVFnaWRXNk5XYTdoaCsrcXU0UFhqSXJrWFl1NmMKb2ZiYlJDSFd1WGNpbjBQb2M4aEtUdFRHcWJoZ3NYUzExTEg4ZzZpMnVzMnBQbWVTcXpuZkEzWEdiQjZ4UFhkUAo4WDZqd3J6Mmgvb1YvT1BnaW52T2VoTktXbnM3QWtJdnJlaFZ3K3gzN0N5aFpDanhFUUc5Qjl3dTZaUXVOYjExCnpiK0FxZlJnM0xxeENSaDZ6c2hZa2EyZWFqRWJDazRDeENtekVuWEg0NHpYcEdYdytzcDBYL0liYksvWWtBTWQKRi96Vm95UTFHMFJML2UzQmM5bjlvZmNDdXJBdjZEV0NweXNobDJYSi9pSG5vcmltWStraTBQZ05TZW1leHZWNQoyMFQ2MWc9PQotLS0tLUVORCBDRVJUSUZJQ0FURS0tLS0tCg==
+      cakey: LS0tLS1CRUdJTiBSU0EgUFJJVkFURSBLRVktLS0tLQpNSUlFb3dJQkFBS0NBUUVBNG1rSi9SbFpPRVA2QXdaUlhPQXpiWTJpWC9qV0t6dTF4Zzc2aFpTbnhSSW13OWczCmRPRXpPb2x2Sm1qUS9HVUNQamhwNTNLREtsZkMwb21PRUtuOXJkaEVoeFBCWUpiakE4YU1MMzMvYit2d2lwYXkKNlNKTHQvYWxHNVdscEFVRDN5eTRub2JzOXJXUk40c2swUCttUjVhcEcyR09SRzdwbXVqRjY3c0ZoQU83bFBqLwpKTWVlb052Rk5pUFM4YzlHRDZQbjFJWEJCRjJoMW1TYmlpSnlLWHlMMHY2a1o0dDM4ZDdRM3J6YkYrNGt2cFc3CmFENFRpdkxHT2ZkYk41MXF6dDVEaG4yMVhsNDkyL3pTRVhDRVBFNGM3akhpSHdkV1BlRktFUjNXckg0cldtUEwKRHdhTkwzRVV1dzdEQnAvN1UwQ0pTRldWcVNaM2tkNXF2NE1tQlFJREFRQUJBb0lCQUgwaXpSQ0VlQmx2Q0xtdgpQanowOWJleE5uT1ExdDVpVEI5Qm5CbEVoazJYc0xGQnliVGgyeXlaVlVPSFh5cUFzWEt1UDJwYWtrQk83VERzCk1nYm56WHZPTW1IdCswMWxWK2Q0VDNiWVR0d1BMWTJMcVNyTmQ4Z2ZuRFhZeWdvVGM0WmY4MUk3QkxGK3ZOcFUKSDI4Y1BVMEg2a05sOGZuRXkzeUE5eE5JOU0xM01JN0lpeithdDdPUllGUkRqTzNQaUY1Y2xBVGErRldsWm96SApEalRhNWZhdGFrcTNFUG84eWNqcDBSeDlMTHNwRXBRbDFkS3VGMWE4ekZpdkh0WDVOMzZMMUdreGltVW9nQ24wCkM4VUcyTWU3V25TOEZrTnpsNE8wZ2hCZHJDR3c0UFM1RENYRXZueEVoTW1kbVhQdGlvVjg2WDVBQ0ZzTHFwNTEKU3BOaGJ1a0NnWUVBOGNzRW1waXJIMmFDVHVUUkZnaEZ4YU54VEEyUVpHZ3R0NDhuSE9qbEwzeE8zYTZCUFBESApraDZZWUYrUm56alRxM1JPTTN2VkxqQUJUWWRzRU14OEZtVGxpREk0clBvN2ovZzB2czFTOWlJV2RKTzk2ME83ClM4MUt4NlVlRThnczcvL3p0OE94THdiZFZXVDlBN0YvWVJUb0dvT3FUdkl3U0pFZktDUDJyaHNDZ1lFQTc3YWoKYlV1OWtpTjhSdzEyTGlONU0rSFBEWGd0UWVzME9aYTlFaG44dmdXZ09WQzhzLzc4aGNzNGtxRjQvdzlqNFFUSgozdG0xcldxK3lpVzB4ODJHSVc0ejZKRjVqQ09hUkVGYXFHSWlTcXlTSW9JRFh4c2VLbXNUT1lWdURib3pxNzV4CmU1T3kydk1qdURtdTh5N3B6RGZETTdRcG82eGYxTldpeFU5S1BsOENnWUVBM3Y3WDNpU1RIY0NTeVdRcW1XRkQKeUFUM0JxY3oxZ1ptczNYcElyYUFPSTB5eHl5YnNMSjN2SUZQRXdMUThNR2VKZkI3OXV0c0xzN0RSTmR5aVFPdQpKWkVrUjduWm4xNmc5Q1I3c01UNGtGdmJ6ZVE4TWZBam1zTlpCa3Q0TTlKWDczaGxNOFBkYzN1blFZeUQ5SllNCjNtSkR0Y0JjbjdhcFpTUENVbWpvcHFVQ2dZQTZ5amN3a2ZmUFJJYXhRbHJ1bStLWTE5T1pBUlZRYW1mbmk5R1oKQStpWmpmV3F1T05lM2JWKzlzVk1LTy9zMWhCdjJtWE1FdWJjdmlaR201TEh3ZDhZaWRlUFBVWnJHVHczYXpQWgp3aCtZNHRRQVJKU2hHWngvV0wxaFNSa2hvcjRUYStTWEl6VWxQNlpPQTArbDhxYUNZRmF1Y293WHlTbkRvQldJCmdKYTd6d0tCZ0htYTNWYTZoZTFCTG03b29Sb0l6bzEwS3FDVnBRM0dkc053eWpTM2Vuck42YlVjaVhMdHlRU1cKa1FqL2VMTkNlNWlwMzhTUXBzOTVlNVJLVlpHZk1vdGlzVUhKeXRhcTQ0YStBUDJOcEE5WVVsV25jQURFS09tVQpNY3d1YUxDeWwwR2tuc3BvSFU5SUk1NW1RdEk5Yi9LV1RoZThBTXVoTFdzZ2pJVEx4THhDCi0tLS0tRU5EIFJTQSBQUklWQVRFIEtFWS0tLS0tCg==
+ui:
+  subdomain: assistant
+  ingress:
+    tlsSecret: ""
+  image:
+    repository: green-with-envy-cluster.icp:8500/conversation/icp-wa-tooling-pathed
+    tag: ui
+  imageOauth:
+    repository: green-with-envy-cluster.icp:8500/conversation/conan-tools
+    tag: 20180726-1331
+cos:
+  minio:
+    persistence:
+      existingClaim: ""
+      size: 5Gi
+      storageClass: local-storage
+    image:
+      repository: green-with-envy-cluster.icp:8500/conversation/minio
+      tag: RELEASE.2018-06-09T03-43-35Z
+    mcImage:
+      repository: green-with-envy-cluster.icp:8500/conversation/mc
+      tag: RELEASE.2018-06-09T02-18-09Z
+etcd:
+  config:
+    dataPVC:
+      size: 10Gi
+      storageClassName: local-storage
+    image:
+      repository: green-with-envy-cluster.icp:8500/conversation/etcd
+      tag: v3.3.3
+postgres:
+  config:
+    persistence:
+      storageClassName: local-storage
+    imagePostgres:
+      repository: green-with-envy-cluster.icp:8500/conversation/stolon
+      tag: v0.12.0-pg9.6
+  image:
+    storeRepository: green-with-envy-cluster.icp:8500/conversation/store
+    storeTag: 20180917-195125-a5e989
+    repository: green-with-envy-cluster.icp:8500/conversation/postgresql
+    tag: 9.6.5-apline
+ingress:
+  config:
+    backendService:
+      ingressPath: /assistant/api
+    authService:
+      images:
+        repository: green-with-envy-cluster.icp:8500/conversation/icp-auth
+        tag: 0.1.2
+    provisionPod:
+      images:
+        repository: green-with-envy-cluster.icp:8500/conversation/icp-provision
+  storeReadyCheck:
+    image:
+      repository: green-with-envy-cluster.icp:8500/conversation/conan-tools
+      tag: 20180726-1331
+bdd:
+  images:
+    repository: green-with-envy-cluster.icp:8500/conversation/dvt-bdd
+    tag: 20180921-170818-b88f72
+redis:
+  config:
+    image:
+      repository: green-with-envy-cluster.icp:8500/conversation/redis-ha
+      tag: 3.2.12-v0.0.24
+slot:
+  image:
+    repository: green-with-envy-cluster.icp:8500/conversation/conan-tools
+    tag: 20180726-1331
+mongodb:
+  config:
+    image:
+      repository: green-with-envy-cluster.icp:8500/conversation/mongo
+      tag: 3.4
+      busyboxRepository: green-with-envy-cluster.icp:8500/conversation/busybox
+      busyboxTag: latest
+    imageTest:
+      testFramework:
+        repository: green-with-envy-cluster.icp:8500/conversation/bats
+        tag: 0.4.0
+    installImage:
+      repository: green-with-envy-cluster.icp:8500/conversation/mongodb-install
+      tag: 0.6
+    persistentVolume:
+      storageClass: local-storage
+mongodbloadclu:
+  image:
+    repository: green-with-envy-cluster.icp:8500/conversation/icp-load-wa-word-vectors
+    tag: 20180912-1205-5-8d9ec85
+tas:
+  image:
+    repository: green-with-envy-cluster.icp:8500/conversation/slad-tas-runtime
+    tag: 20180914-1944-808
+    mongoloaderRepository: green-with-envy-cluster.icp:8500/conversation/improve-recommendations-mongo-loader
+    mongoloaderTag: latest
+master:
+  image:
+    repository: green-with-envy-cluster.icp:8500/conversation/master
+    tag: 20180922-1738-3
+    mongoloaderRepository: green-with-envy-cluster.icp:8500/conversation/improve-recommendations-mongo-loader
+    mongoloaderTag: latest
+  slad:
+    dockerRegistry: ""
+    dockerRegistryPullSecret: ""
+    dockerRegistryNamespace: ""
+nlu:
+  image:
+    repository: green-with-envy-cluster.icp:8500/conversation/nlu
+    tag: 20180914-1550
+environment:
+  image:
+    repository: green-with-envy-cluster.icp:8500/conversation/conan-tools
+    tag: latest
+ed:
+  image:
+    runtimeRepository: green-with-envy-cluster.icp:8500/conversation/model-mesh
+    runtimeTag: master-20180906-118
+    mmRepository: green-with-envy-cluster.icp:8500/conversation/entities
+    mmTag: 1.0.360-gdc8fdc9.wa_icp_1_0_build
+    py4jRepository: green-with-envy-cluster.icp:8500/conversation/objectstore-py4j-bridge
+    py4jTag: 20180913-1010-29
+sireg:
+  image:
+    repository: green-with-envy-cluster.icp:8500/conversation/sireg
+    modelRepository: green-with-envy-cluster.icp:8500/conversation/sireg-model
+dialog:
+  image:
+    repository: green-with-envy-cluster.icp:8500/conversation/dialog
+    tag: 20180910-0733-38fcc39-master-32
+store:
+  image:
+    repository: green-with-envy-cluster.icp:8500/conversation/store
+    tag: 20180917-195125-a5e989
+    init:
+      schemaCheck:
+        repository: green-with-envy-cluster.icp:8500/conversation/postgresql
+        tag: 9.6.5-apline
+      cluStarted:
+        repository: green-with-envy-cluster.icp:8500/conversation/conan-tools
+        tag: 20180726-1331
+dependencyChecks:
+  minioRepository: green-with-envy-cluster.icp:8500/conversation/minio-mc
+  minioTag: latest

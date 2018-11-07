@@ -54,17 +54,31 @@ bx pr login -a https://172.16.50.154:8443 --skip-ssl-validation docker login htt
   helm init --client-only
  ```
 
- * Once done be sure to synchronize the Helm repositories, using the ICP Console. Ensure the local-charts repo is defined. Something like:
+ * Once done be sure to synchronize the Helm repositories, as of now it is not possible to install Watson Assistant with the ICP Console, but still you need to updload the image. So first ensure the local-charts repo is defined. Something like:
   `local-charts	https://green-with-envy-cluster.icp:8443/helm-repo/charts`
   * Get To the ICP catalog to search for Watson:   
   ![](wa-catalog.png)  
-  * if you install for production be sure to define two replicas per microservice. (1 otherwise)
-  * Specify the following parameters:
+
+  * At this stage the installation instruction is proposing to use values.yaml but does not give how to access it. So from a computer where you can access the cluster using helm and kubectl, first download the tar file:
+  `curl -k -O https://green-with-envy-cluster.icp:8443/helm-repo/requiredAssets/ibm-watson-assistant-prod-1.0.0.tgz`
+  * un tar  
+  ```
+  tar -xzvf ibm-watson-assistant-prod-1.0.0.tgz ibm-watson-assistant-prod/values.yaml -C ./ --strip-components=1
+  ```
+  * update the extracted values.yml with the name of the cluster and removing the Czech language. You may change default passwords if you want.
+  ```
+  global:
+  schConfigTemplate: assistant.sch.chart.config.values
+  deploymentType: Development
+  icpUrl: 'green-with-envy-cluster.icp'
+  languages:
+    english: true
+    czech: false
+  ```
+  * You can tune the following parameters in values.yaml
 
 | parameter | value |  
 | --- | --- |
-| Release name | watson-assistant-prod |
-| Target Namespace | conversation |
 | language | select English, unselect Czech|
 | Create Cloud Object Store COS | must be selected |
 | Create Redis | must be selected |
@@ -78,6 +92,14 @@ bx pr login -a https://172.16.50.154:8443 --skip-ssl-validation docker login htt
 | Create MongoDB | must be selected |
 | MongoDB Admin user name | admin |
 | MongoDB Admin password |  |
+
+ * Deploy using helm:
+ ```
+ helm install --tls --namespace conversation --name assistant -f values.yaml ibm-watson-assistant-prod-1.0.0.tgz
+ ```
+ if you have some issues in connection, tiller versioning, ... see the ICP troubleshooting note
+
+
 
 ### New Deployment Diagram In Hybrid Cloud
 The following diagram is an adaptation of the diagram in the Cognitive reference architecture you can find in the IBM [Garage architecture center](https://www.ibm.com/cloud/garage/architectures/cognitiveArchitecture/reference-architecture)
