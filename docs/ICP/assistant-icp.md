@@ -80,26 +80,45 @@ bx pr login -a https://172.16.50.154:8443 --skip-ssl-validation docker login htt
 | MongoDB Admin password |  |
 
 ### New Deployment Diagram In Hybrid Cloud
+The following diagram is an adaptation of the diagram in the Cognitive reference architecture you can find in the IBM [Garage architecture center](https://www.ibm.com/cloud/garage/architectures/cognitiveArchitecture/reference-architecture)
+
+![](WA-RA.png)
+
+In this diagram, we can see that the deployment of the `conversation` and `speech to text` services are now done on cloud platform running in the enterprise network or on-premise environment.
+
+Using product mapping:
+* the Cloud Platform is IBM Cloud Private
+* the Conversation is Watson Assistant for ICP
+* Speech to text is Watson Speech to Text for ICP
+* API Runtimes is IBM API Connect for ICP
+* The BFF is a microservice responsible to support API for the webapp or mobile app. It will be a customer component. Example of such BFF can be found in this project
+* The Application Logic is a microservice exposing a set of APIs to implement service orchestration. The BFF of the previous project is also doing the application logic.
+
+#### Physical Deployment
 The Watson Assistant Helm chart installs the following microservices:
 
-* Dialog: Dialog runtime, or user-chat capability.
-* Store: API endpoints.
-* CLU (Conversational Language Understanding): Interface for store to communicate with the back-end to initiate ML training.
-* Master: Controls the lifecycle of underlying intent and entity models.
-* TAS: Manages services model inferencing.
-* SLAD: Manages service training capabilities.
-* SIREG - Manages tokenization and system entity capabilities.
-* ed-mm: Manages system entity capabilities.
-* Tooling: Provides the developer user interface.
+* **Dialog**: Dialog runtime, or user-chat capability.
+* **Store**: API endpoints.
+* **CLU** (Conversational Language Understanding): Interface for store to communicate with the back-end to initiate ML training.
+* **Master**: Controls the lifecycle of underlying intent and entity models.
+* **TAS**: Manages services model inferencing.
+* **SLAD**: Manages service training capabilities.
+* **SIREG** - Manages tokenization and system entity capabilities.
+* **ed-mm**: Manages system entity capabilities.
+* **Tooling**: Provides the developer user interface.
 
 and the following stores:
 
-* PostgreSQL: Stores training data.
-* MongoDB: Stores word vectors.
-* Redis: Caches data.
-* etcd: Manages service registration and discovery.
-* Minio: Stores CLU models.
+* **PostgreSQL**: Stores training data.
+* **MongoDB**: Stores word vectors.
+* **Redis**: Caches data.
+* **etcd**: Manages service registration and discovery.
+* **Minio**: Stores CLU models.
 
-The following diagram illustrates the pod allocation:   
+The following diagram illustrates the Logical model for those components:   
 
-![]()
+![](WA-LOM.png)
+
+Finally when deploying Watson Assistant within a kubernetes platform like ICP we will have potentially the following pod allocations:
+
+![](WA-PODS.png)
